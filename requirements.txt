@@ -1,0 +1,11 @@
+torch==1.13.0
+torchvision==0.14.0
+numpy==1.23.5
+scipy==1.9.3
+nibabel==5.1.0
+tqdm==4.64.1
+scikit-image==0.19.3
+python-dotenv==1.0.0
+matplotlib==3.6.3
+pandas==1.5.3
+seaborn==0.12.2
