@@ -109,7 +109,20 @@ class LiTSDataset(Dataset):
         """返回数据集总病例数"""
         return len(self.case_files)
 
-
+def filter_by_tumor_size(self, min_diameter=0, max_diameter=np.inf):
+    """按肿瘤最大直径过滤数据集（单位：cm）"""
+    filtered_samples = []
+    for sample in self.samples:
+        tumor_mask = sample["label"] == 2  # 肿瘤标签=2
+        if not np.any(tumor_mask):
+            continue
+        # 计算肿瘤最大直径（像素转cm，需结合CT图像间距）
+        tumor_coords = np.where(tumor_mask)
+        diameter_pixel = np.max(tumor_coords) - np.min(tumor_coords)
+        diameter_cm = diameter_pixel * self.spacing[0] / 10  # 假设spacing单位为mm，转cm
+        if min_diameter <= diameter_cm < max_diameter:
+            filtered_samples.append(sample)
+    return LiTSDataset(samples=filtered_samples, **self.kwargs)  # 返回新数据集实例
 class ThreeDIRCADbDataset(Dataset):
     """
     针对3DIRCADb数据集的加载类，适配论文4.3节（Experiment on the 3Dircadb dataset）的验证需求

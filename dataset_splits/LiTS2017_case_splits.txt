@@ -1,0 +1,4 @@
+The dataset split (7:1:2, 92/13/26 cases) is based on the official LiTS2017 training set (131 cases). We provide the split IDs ("Volume" refers to the CT scan volume, and "segmentation" refers to segmentation annotation.):
+-Training set (92 cases): IDs [(volume-0.nii.gz, segmentation-0.nii.gz), (volume-1.nii.gz, segmentation-1.nii.gz), ..., (volume-092.nii.gz, segmentation-092.nii.gz)] (consecutive indexing of official training cases)
+-Validation set (13 cases): IDs [(volume-093.nii.gz, segmentation-093.nii.gz), (volume-094.nii.gz, segmentation-094.nii.gz), ..., (volume-105.nii.gz, segmentation-105.nii.gz)]
+-Test set (26 cases): IDs [(volume-106.nii.gz, segmentation-106.nii.gz), (volume-107.nii.gz, segmentation-107.nii.gz), ..., (volume-131.nii.gz, segmentation-131.nii.gz)]

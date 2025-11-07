@@ -1,11 +1,22 @@
-torch==1.13.0
-torchvision==0.14.0
+# Deep learning framework
+torch==1.13.1+cu117
+torchvision==0.14.1+cu117
+
+# Data processing and visualization
 numpy==1.23.5
+pandas==1.5.3
+matplotlib==3.6.2
+SimpleITK==2.2.1
+
+# Model training assistance
+tqdm==4.64.1
+scikit-learn==1.2.0
+
+# Other dependencies
+opencv-python==4.6.0.66
+Pillow==9.3.0
 scipy==1.9.3
 nibabel==5.1.0
-tqdm==4.64.1
 scikit-image==0.19.3
 python-dotenv==1.0.0
-matplotlib==3.6.3
-pandas==1.5.3
 seaborn==0.12.2

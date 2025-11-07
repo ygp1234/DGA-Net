@@ -56,3 +56,12 @@ class DAGNet(nn.Module):
         # 最终输出
         out = self.final_conv(dec_feat)
         return out
+class DGANetAblation(DAGNet):
+    def __init__(self, ablate="fsmf", **kwargs):
+        super().__init__(**kwargs)
+        # 根据消融目标移除对应模块
+        if ablate == "fsmf":
+            self.encoder.fsmf_branch = self._replace_with_baseline_branch()  # 用基准分支替换FSMF分支
+        elif ablate == "convfft":
+            self.encoder.fsmf_branch.convfft_block = self._replace_with_conv_block()  # 用普通卷积替换ConvFFT
+        # 其他消融逻辑（gmca/maha/one_branch/add_concat）类似，需按论文结构实现
